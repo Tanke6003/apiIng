@@ -8,7 +8,7 @@ const loadRoutes = (app) => {
     // app.get('/Catalogo/Principal',collectionController.GetCollection);
     // app.post('/model',modelController.GetModel);
     app.post('/agregar-empleado',employeController.addEmploye);
-    app.post('/empleados',employeController.getAllEmployes);
+    app.get('/empleados',employeController.getAllEmployes);
 }
 module.exports = {
     loadRoutes
