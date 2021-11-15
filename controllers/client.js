@@ -1,9 +1,9 @@
 const constants = require('../constants');
-const employeModel =  require('../models/employeModel');
-async function addEmploye(req, res) {
+const clientModel =  require('../models/clientModel');
+async function addClient(req, res) {
     try {
         let data = req.body
-        await employeModel.addEmploye(data);
+        await clientModel.addClient(data);
         let response = {
             message: 'El registro fue exitoso'
         }
@@ -18,12 +18,12 @@ async function addEmploye(req, res) {
         res.status(500).send(data);
     }
 }
-async function getEmploye(req, res) {
+async function getClient(req, res) {
     try {
         let id = req.body.id
-        let employe =await employeModel.getEmploye(id);
+        let client =await clientModel.getClient(id);
         let response = {
-            employe
+            client
         }
         res.send(response);
 
@@ -36,12 +36,12 @@ async function getEmploye(req, res) {
         res.status(500).send(data);
     }
 }
-async function getAllEmployes(req, res) {
+async function getAllClients(req, res) {
     try {
         let data = req.body
-        let employes =await employeModel.getAllEmployes(data);
+        let clients =await clientModel.getAllClients(data);
         let response = {
-            employes
+            clients
         }
         res.send(response);
 
@@ -55,7 +55,7 @@ async function getAllEmployes(req, res) {
     }
 }
 module.exports={
-    addEmploye,
-    getEmploye,
-    getAllEmployes
+    addClient,
+    getClient,
+    getAllClients
 }

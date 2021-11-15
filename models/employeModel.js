@@ -6,11 +6,11 @@ function addEmploye({nombres,apellidos,puesto,direccion,telefono,fechaNacimiento
     `
     return connection.runQuery(query,[nombres,apellidos,puesto,direccion,telefono,fechaNacimiento]);
 }
-function getEmploye({id}){
+function getEmploye(id){
     let query = `
         select * from empleado where id = ?
     `
-    return connection.runQueryRow(query,id)
+    return connection.runQuery(query,id)
 }
 function getAllEmployes(){
     let query = `
