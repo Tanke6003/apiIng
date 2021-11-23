@@ -18,6 +18,24 @@ async function addClient(req, res) {
         res.status(500).send(data);
     }
 }
+async function editClient(req, res) {
+    try {
+        let data = req.body
+        await clientModel.editClient(data);
+        let response = {
+            message: 'El registro fue exitoso'
+        }
+        res.send(response);
+
+    } catch (ex) {
+        console.log(ex);
+        let data = {
+            errorMessage: constants.CATCH_MESSAGE,
+            errorData: ex
+        }
+        res.status(500).send(data);
+    }
+}
 async function getClient(req, res) {
     try {
         let id = req.body.id
@@ -57,5 +75,6 @@ async function getAllClients(req, res) {
 module.exports={
     addClient,
     getClient,
-    getAllClients
+    getAllClients,
+    editClient
 }

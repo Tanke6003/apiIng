@@ -12,6 +12,12 @@ function getClient(id){
     `
     return connection.runQuery(query,id)
 }
+function editClient({nombres,apellidos,direccion,telefono,correo,id}){
+    let query = `
+    UPDATE cliente SET nombres = ? ,apellidos = ?,direccion = ?, telefono = ? , correo = ? WHERE id = ?
+    `
+    return connection.runQuery(query,[nombres,apellidos,direccion,telefono,correo,id]);
+}
 function getAllClients(){
     let query = `
         select * from cliente
@@ -21,5 +27,6 @@ function getAllClients(){
 module.exports={
     addClient,
     getClient,
-    getAllClients
+    getAllClients,
+    editClient
 }

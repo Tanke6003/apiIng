@@ -1,9 +1,9 @@
 const constants = require('../constants');
-const employeModel =  require('../models/employeModel');
-async function addEmploye(req, res) {
+const vendorModel =  require('../models/vendorModel');
+async function addVendor(req, res) {
     try {
         let data = req.body
-        await employeModel.addEmploye(data);
+        await vendorModel.addVendor(data);
         let response = {
             message: 'El registro fue exitoso'
         }
@@ -18,10 +18,10 @@ async function addEmploye(req, res) {
         res.status(500).send(data);
     }
 }
-async function editEmploye(req, res) {
+async function editVendor(req, res) {
     try {
         let data = req.body
-        await employeModel.editEmploye(data);
+        await vendorModel.editVendor(data);
         let response = {
             message: 'El registro fue exitoso'
         }
@@ -36,31 +36,12 @@ async function editEmploye(req, res) {
         res.status(500).send(data);
     }
 }
-async function inactiveEmploye(req, res) {
-    try {
-        let data = req.body
-        await employeModel.inactiveEmploye(data);
-        let response = {
-            message: 'El registro fue exitoso'
-        }
-        res.send(response);
-
-    } catch (ex) {
-        console.log(ex);
-        let data = {
-            errorMessage: constants.CATCH_MESSAGE,
-            errorData: ex
-        }
-        res.status(500).send(data);
-    }
-}
-async function getEmploye(req, res) {
+async function getVendor(req, res) {
     try {
         let id = req.body.id
-
-        let employe =await employeModel.getEmploye(id);
+        let vendor =await vendorModel.getVendor(id);
         let response = {
-            employe
+            vendor
         }
         res.send(response);
 
@@ -73,12 +54,12 @@ async function getEmploye(req, res) {
         res.status(500).send(data);
     }
 }
-async function getAllEmployes(req, res) {
+async function getAllVendors(req, res) {
     try {
         let data = req.body
-        let employes =await employeModel.getAllEmployes(data);
+        let vendors =await vendorModel.getAllVendors(data);
         let response = {
-            employes
+            vendors
         }
         res.send(response);
 
@@ -92,9 +73,8 @@ async function getAllEmployes(req, res) {
     }
 }
 module.exports={
-    addEmploye,
-    getEmploye,
-    getAllEmployes,
-    editEmploye,
-    inactiveEmploye
+    addVendor,
+    getVendor,
+    getAllVendors,
+    editVendor
 }
